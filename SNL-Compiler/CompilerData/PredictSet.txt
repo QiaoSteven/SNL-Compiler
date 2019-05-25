@@ -1,0 +1,108 @@
+Predict Map: 
+
+1)     { PROGRAM  }
+2)     { PROGRAM  }
+3)     { ID  }
+4)     { BEGIN PROCEDURE TYPE VAR  }
+5)     { BEGIN PROCEDURE VAR  }
+6)     { TYPE  }
+7)     { TYPE  }
+8)     { ID  }
+9)     { BEGIN PROCEDURE VAR  }
+10)     { ID  }
+11)     { ID  }
+12)     { CHAR INTEGER  }
+13)     { ARRAY RECORD  }
+14)     { ID  }
+15)     { INTEGER  }
+16)     { CHAR  }
+17)     { ARRAY  }
+18)     { RECORD  }
+19)     { ARRAY  }
+20)     { INTC  }
+21)     { INTC  }
+22)     { RECORD  }
+23)     { CHAR INTEGER  }
+24)     { ARRAY  }
+25)     { END  }
+26)     { ARRAY CHAR INTEGER  }
+27)     { ID  }
+28)     { ;  }
+29)     { ,  }
+30)     { BEGIN PROCEDURE  }
+31)     { VAR  }
+32)     { VAR  }
+33)     { ARRAY CHAR ID INTEGER RECORD  }
+34)     { BEGIN PROCEDURE  }
+35)     { ARRAY CHAR ID INTEGER RECORD  }
+36)     { ID  }
+37)     { ;  }
+38)     { ,  }
+39)     { BEGIN  }
+40)     { PROCEDURE  }
+41)     { PROCEDURE  }
+42)     { )  }
+43)     { ARRAY CHAR ID INTEGER RECORD VAR  }
+44)     { ARRAY CHAR ID INTEGER RECORD VAR  }
+45)     { )  }
+46)     { ;  }
+47)     {  }
+48)     { PROCEDURE  }
+49)     { ID  }
+50)     { ARRAY CHAR ID INTEGER RECORD  }
+51)     { VAR  }
+52)     { ID  }
+53)     { ) ;  }
+54)     { ,  }
+55)     { BEGIN PROCEDURE TYPE VAR  }
+56)     { BEGIN  }
+57)     { BEGIN  }
+58)     { ID IF READ RETURN WHILE WRITE  }
+59)     { ELSE END ENDWH FI  }
+60)     { ;  }
+61)     { IF  }
+62)     { WHILE  }
+63)     { READ  }
+64)     { WRITE  }
+65)     { RETURN  }
+66)     { ID  }
+67)     { . := [  }
+68)     { (  }
+69)     { . := [  }
+70)     { IF  }
+71)     { WHILE  }
+72)     { READ  }
+73)     { ID  }
+74)     { WRITE  }
+75)     { RETURN  }
+76)     { (  }
+77)     { )  }
+78)     { ( ID INTC  }
+79)     { )  }
+80)     { ,  }
+81)     { ( ID INTC  }
+82)     { < =  }
+83)     { ( ID INTC  }
+84)     { ) , ; < = DO ELSE END ENDWH FI THEN ]  }
+85)     { + -  }
+86)     { ( ID INTC  }
+87)     { ) + , - ; < = DO ELSE END ENDWH FI THEN ]  }
+88)     { * /  }
+89)     { (  }
+90)     { INTC  }
+91)     { ID  }
+92)     { ID  }
+93)     { ) * + , - / := ; < = DO ELSE END ENDWH FI THEN ]  }
+94)     { [  }
+95)     { .  }
+96)     { ID  }
+97)     { ) * + , - / := ; < = DO ELSE END ENDWH FI THEN ]  }
+98)     { [  }
+99)     { <  }
+100)     { =  }
+101)     { +  }
+102)     { -  }
+103)     { *  }
+104)     { /  }
+
+

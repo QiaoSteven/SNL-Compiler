@@ -1,0 +1,855 @@
+log Num)   [Stack Top Element]   <Input Element>     {action}
+1) [Program]  <PROGRAM>                             /1/ {.}  {ProgramBody}  {DeclarePart}  {ProgramHead}  
+2) [ProgramHead]  <PROGRAM>                             /2/ {ProgramName}  {PROGRAM}  
+3) [PROGRAM]  <PROGRAM>                             match!
+4) [ProgramName]  <ID>                             /3/ {ID}  
+5) [ID]  <ID>                             match!
+6) [DeclarePart]  <VAR>                             /4/ {ProcDec}  {VarDec}  {TypeDec}  
+7) [TypeDec]  <VAR>                             /5/ {?}  
+8) [?]  <VAR>                             pop Epsilon char! 
+9) [VarDec]  <VAR>                             /31/ {VarDeclaration}  
+10) [VarDeclaration]  <VAR>                             /32/ {VarDecList}  {VAR}  
+11) [VAR]  <VAR>                             match!
+12) [VarDecList]  <INTEGER>                             /33/ {VarDecMore}  {;}  {VarIdList}  {TypeName}  
+13) [TypeName]  <INTEGER>                             /12/ {BaseType}  
+14) [BaseType]  <INTEGER>                             /15/ {INTEGER}  
+15) [INTEGER]  <INTEGER>                             match!
+16) [VarIdList]  <ID>                             /36/ {VarIdMore}  {ID}  
+17) [ID]  <ID>                             match!
+18) [VarIdMore]  <,>                             /38/ {VarIdList}  {,}  
+19) [,]  <,>                             match!
+20) [VarIdList]  <ID>                             /36/ {VarIdMore}  {ID}  
+21) [ID]  <ID>                             match!
+22) [VarIdMore]  <,>                             /38/ {VarIdList}  {,}  
+23) [,]  <,>                             match!
+24) [VarIdList]  <ID>                             /36/ {VarIdMore}  {ID}  
+25) [ID]  <ID>                             match!
+26) [VarIdMore]  <;>                             /37/ {?}  
+27) [?]  <;>                             pop Epsilon char! 
+28) [;]  <;>                             match!
+29) [VarDecMore]  <ARRAY>                             /35/ {VarDecList}  
+30) [VarDecList]  <ARRAY>                             /33/ {VarDecMore}  {;}  {VarIdList}  {TypeName}  
+31) [TypeName]  <ARRAY>                             /13/ {StructureType}  
+32) [StructureType]  <ARRAY>                             /17/ {ArrayType}  
+33) [ArrayType]  <ARRAY>                             /19/ {BaseType}  {OF}  {]}  {Top}  {..}  {Low}  {[}  {ARRAY}  
+34) [ARRAY]  <ARRAY>                             match!
+35) [[]  <[>                             match!
+36) [Low]  <INTC>                             /20/ {INTC}  
+37) [INTC]  <INTC>                             match!
+38) [..]  <..>                             match!
+39) [Top]  <INTC>                             /21/ {INTC}  
+40) [INTC]  <INTC>                             match!
+41) []]  <]>                             match!
+42) [OF]  <OF>                             match!
+43) [BaseType]  <INTEGER>                             /15/ {INTEGER}  
+44) [INTEGER]  <INTEGER>                             match!
+45) [VarIdList]  <ID>                             /36/ {VarIdMore}  {ID}  
+46) [ID]  <ID>                             match!
+47) [VarIdMore]  <;>                             /37/ {?}  
+48) [?]  <;>                             pop Epsilon char! 
+49) [;]  <;>                             match!
+50) [VarDecMore]  <PROCEDURE>                             /34/ {?}  
+51) [?]  <PROCEDURE>                             pop Epsilon char! 
+52) [ProcDec]  <PROCEDURE>                             /40/ {ProcDeclaration}  
+53) [ProcDeclaration]  <PROCEDURE>                             /41/ {ProcDec}  {ProcBody}  {ProcDecPart}  {;}  {)}  {ParamList}  {(}  {ProcName}  {PROCEDURE}  
+54) [PROCEDURE]  <PROCEDURE>                             match!
+55) [ProcName]  <ID>                             /49/ {ID}  
+56) [ID]  <ID>                             match!
+57) [(]  <(>                             match!
+58) [ParamList]  <INTEGER>                             /43/ {ParamDecList}  
+59) [ParamDecList]  <INTEGER>                             /44/ {ParamMore}  {Param}  
+60) [Param]  <INTEGER>                             /50/ {FormList}  {TypeName}  
+61) [TypeName]  <INTEGER>                             /12/ {BaseType}  
+62) [BaseType]  <INTEGER>                             /15/ {INTEGER}  
+63) [INTEGER]  <INTEGER>                             match!
+64) [FormList]  <ID>                             /52/ {FidMore}  {ID}  
+65) [ID]  <ID>                             match!
+66) [FidMore]  <)>                             /53/ {?}  
+67) [?]  <)>                             pop Epsilon char! 
+68) [ParamMore]  <)>                             /45/ {?}  
+69) [?]  <)>                             pop Epsilon char! 
+70) [)]  <)>                             match!
+71) [;]  <;>                             match!
+72) [ProcDecPart]  <VAR>                             /55/ {DeclarePart}  
+73) [DeclarePart]  <VAR>                             /4/ {ProcDec}  {VarDec}  {TypeDec}  
+74) [TypeDec]  <VAR>                             /5/ {?}  
+75) [?]  <VAR>                             pop Epsilon char! 
+76) [VarDec]  <VAR>                             /31/ {VarDeclaration}  
+77) [VarDeclaration]  <VAR>                             /32/ {VarDecList}  {VAR}  
+78) [VAR]  <VAR>                             match!
+79) [VarDecList]  <INTEGER>                             /33/ {VarDecMore}  {;}  {VarIdList}  {TypeName}  
+80) [TypeName]  <INTEGER>                             /12/ {BaseType}  
+81) [BaseType]  <INTEGER>                             /15/ {INTEGER}  
+82) [INTEGER]  <INTEGER>                             match!
+83) [VarIdList]  <ID>                             /36/ {VarIdMore}  {ID}  
+84) [ID]  <ID>                             match!
+85) [VarIdMore]  <,>                             /38/ {VarIdList}  {,}  
+86) [,]  <,>                             match!
+87) [VarIdList]  <ID>                             /36/ {VarIdMore}  {ID}  
+88) [ID]  <ID>                             match!
+89) [VarIdMore]  <,>                             /38/ {VarIdList}  {,}  
+90) [,]  <,>                             match!
+91) [VarIdList]  <ID>                             /36/ {VarIdMore}  {ID}  
+92) [ID]  <ID>                             match!
+93) [VarIdMore]  <;>                             /37/ {?}  
+94) [?]  <;>                             pop Epsilon char! 
+95) [;]  <;>                             match!
+96) [VarDecMore]  <INTEGER>                             /35/ {VarDecList}  
+97) [VarDecList]  <INTEGER>                             /33/ {VarDecMore}  {;}  {VarIdList}  {TypeName}  
+98) [TypeName]  <INTEGER>                             /12/ {BaseType}  
+99) [BaseType]  <INTEGER>                             /15/ {INTEGER}  
+100) [INTEGER]  <INTEGER>                             match!
+101) [VarIdList]  <ID>                             /36/ {VarIdMore}  {ID}  
+102) [ID]  <ID>                             match!
+103) [VarIdMore]  <;>                             /37/ {?}  
+104) [?]  <;>                             pop Epsilon char! 
+105) [;]  <;>                             match!
+106) [VarDecMore]  <BEGIN>                             /34/ {?}  
+107) [?]  <BEGIN>                             pop Epsilon char! 
+108) [ProcDec]  <BEGIN>                             /39/ {?}  
+109) [?]  <BEGIN>                             pop Epsilon char! 
+110) [ProcBody]  <BEGIN>                             /56/ {ProgramBody}  
+111) [ProgramBody]  <BEGIN>                             /57/ {END}  {StmList}  {BEGIN}  
+112) [BEGIN]  <BEGIN>                             match!
+113) [StmList]  <ID>                             /58/ {StmMore}  {Stm}  
+114) [Stm]  <ID>                             /66/ {AssCall}  {ID}  
+115) [ID]  <ID>                             match!
+116) [AssCall]  <:=>                             /67/ {AssignmentRest}  
+117) [AssignmentRest]  <:=>                             /69/ {Exp}  {:=}  {VariMore}  
+118) [VariMore]  <:=>                             /93/ {?}  
+119) [?]  <:=>                             pop Epsilon char! 
+120) [:=]  <:=>                             match!
+121) [Exp]  <INTC>                             /83/ {OtherTerm}  {Term}  
+122) [Term]  <INTC>                             /86/ {OtherFactor}  {Factor}  
+123) [Factor]  <INTC>                             /90/ {INTC}  
+124) [INTC]  <INTC>                             match!
+125) [OtherFactor]  <;>                             /87/ {?}  
+126) [?]  <;>                             pop Epsilon char! 
+127) [OtherTerm]  <;>                             /84/ {?}  
+128) [?]  <;>                             pop Epsilon char! 
+129) [StmMore]  <;>                             /60/ {StmList}  {;}  
+130) [;]  <;>                             match!
+131) [StmList]  <WHILE>                             /58/ {StmMore}  {Stm}  
+132) [Stm]  <WHILE>                             /62/ {LoopStm}  
+133) [LoopStm]  <WHILE>                             /71/ {ENDWH}  {StmList}  {DO}  {RelExp}  {WHILE}  
+134) [WHILE]  <WHILE>                             match!
+135) [RelExp]  <ID>                             /81/ {OtherRelE}  {Exp}  
+136) [Exp]  <ID>                             /83/ {OtherTerm}  {Term}  
+137) [Term]  <ID>                             /86/ {OtherFactor}  {Factor}  
+138) [Factor]  <ID>                             /91/ {Variable}  
+139) [Variable]  <ID>                             /92/ {VariMore}  {ID}  
+140) [ID]  <ID>                             match!
+141) [VariMore]  <<>                             /93/ {?}  
+142) [?]  <<>                             pop Epsilon char! 
+143) [OtherFactor]  <<>                             /87/ {?}  
+144) [?]  <<>                             pop Epsilon char! 
+145) [OtherTerm]  <<>                             /84/ {?}  
+146) [?]  <<>                             pop Epsilon char! 
+147) [OtherRelE]  <<>                             /82/ {Exp}  {CmpOp}  
+148) [CmpOp]  <<>                             /99/ {<}  
+149) [<]  <<>                             match!
+150) [Exp]  <ID>                             /83/ {OtherTerm}  {Term}  
+151) [Term]  <ID>                             /86/ {OtherFactor}  {Factor}  
+152) [Factor]  <ID>                             /91/ {Variable}  
+153) [Variable]  <ID>                             /92/ {VariMore}  {ID}  
+154) [ID]  <ID>                             match!
+155) [VariMore]  <DO>                             /93/ {?}  
+156) [?]  <DO>                             pop Epsilon char! 
+157) [OtherFactor]  <DO>                             /87/ {?}  
+158) [?]  <DO>                             pop Epsilon char! 
+159) [OtherTerm]  <DO>                             /84/ {?}  
+160) [?]  <DO>                             pop Epsilon char! 
+161) [DO]  <DO>                             match!
+162) [StmList]  <ID>                             /58/ {StmMore}  {Stm}  
+163) [Stm]  <ID>                             /66/ {AssCall}  {ID}  
+164) [ID]  <ID>                             match!
+165) [AssCall]  <:=>                             /67/ {AssignmentRest}  
+166) [AssignmentRest]  <:=>                             /69/ {Exp}  {:=}  {VariMore}  
+167) [VariMore]  <:=>                             /93/ {?}  
+168) [?]  <:=>                             pop Epsilon char! 
+169) [:=]  <:=>                             match!
+170) [Exp]  <ID>                             /83/ {OtherTerm}  {Term}  
+171) [Term]  <ID>                             /86/ {OtherFactor}  {Factor}  
+172) [Factor]  <ID>                             /91/ {Variable}  
+173) [Variable]  <ID>                             /92/ {VariMore}  {ID}  
+174) [ID]  <ID>                             match!
+175) [VariMore]  <->                             /93/ {?}  
+176) [?]  <->                             pop Epsilon char! 
+177) [OtherFactor]  <->                             /87/ {?}  
+178) [?]  <->                             pop Epsilon char! 
+179) [OtherTerm]  <->                             /85/ {Exp}  {AddOp}  
+180) [AddOp]  <->                             /102/ {-}  
+181) [-]  <->                             match!
+182) [Exp]  <ID>                             /83/ {OtherTerm}  {Term}  
+183) [Term]  <ID>                             /86/ {OtherFactor}  {Factor}  
+184) [Factor]  <ID>                             /91/ {Variable}  
+185) [Variable]  <ID>                             /92/ {VariMore}  {ID}  
+186) [ID]  <ID>                             match!
+187) [VariMore]  <+>                             /93/ {?}  
+188) [?]  <+>                             pop Epsilon char! 
+189) [OtherFactor]  <+>                             /87/ {?}  
+190) [?]  <+>                             pop Epsilon char! 
+191) [OtherTerm]  <+>                             /85/ {Exp}  {AddOp}  
+192) [AddOp]  <+>                             /101/ {+}  
+193) [+]  <+>                             match!
+194) [Exp]  <INTC>                             /83/ {OtherTerm}  {Term}  
+195) [Term]  <INTC>                             /86/ {OtherFactor}  {Factor}  
+196) [Factor]  <INTC>                             /90/ {INTC}  
+197) [INTC]  <INTC>                             match!
+198) [OtherFactor]  <;>                             /87/ {?}  
+199) [?]  <;>                             pop Epsilon char! 
+200) [OtherTerm]  <;>                             /84/ {?}  
+201) [?]  <;>                             pop Epsilon char! 
+202) [StmMore]  <;>                             /60/ {StmList}  {;}  
+203) [;]  <;>                             match!
+204) [StmList]  <ID>                             /58/ {StmMore}  {Stm}  
+205) [Stm]  <ID>                             /66/ {AssCall}  {ID}  
+206) [ID]  <ID>                             match!
+207) [AssCall]  <:=>                             /67/ {AssignmentRest}  
+208) [AssignmentRest]  <:=>                             /69/ {Exp}  {:=}  {VariMore}  
+209) [VariMore]  <:=>                             /93/ {?}  
+210) [?]  <:=>                             pop Epsilon char! 
+211) [:=]  <:=>                             match!
+212) [Exp]  <INTC>                             /83/ {OtherTerm}  {Term}  
+213) [Term]  <INTC>                             /86/ {OtherFactor}  {Factor}  
+214) [Factor]  <INTC>                             /90/ {INTC}  
+215) [INTC]  <INTC>                             match!
+216) [OtherFactor]  <;>                             /87/ {?}  
+217) [?]  <;>                             pop Epsilon char! 
+218) [OtherTerm]  <;>                             /84/ {?}  
+219) [?]  <;>                             pop Epsilon char! 
+220) [StmMore]  <;>                             /60/ {StmList}  {;}  
+221) [;]  <;>                             match!
+222) [StmList]  <WHILE>                             /58/ {StmMore}  {Stm}  
+223) [Stm]  <WHILE>                             /62/ {LoopStm}  
+224) [LoopStm]  <WHILE>                             /71/ {ENDWH}  {StmList}  {DO}  {RelExp}  {WHILE}  
+225) [WHILE]  <WHILE>                             match!
+226) [RelExp]  <ID>                             /81/ {OtherRelE}  {Exp}  
+227) [Exp]  <ID>                             /83/ {OtherTerm}  {Term}  
+228) [Term]  <ID>                             /86/ {OtherFactor}  {Factor}  
+229) [Factor]  <ID>                             /91/ {Variable}  
+230) [Variable]  <ID>                             /92/ {VariMore}  {ID}  
+231) [ID]  <ID>                             match!
+232) [VariMore]  <<>                             /93/ {?}  
+233) [?]  <<>                             pop Epsilon char! 
+234) [OtherFactor]  <<>                             /87/ {?}  
+235) [?]  <<>                             pop Epsilon char! 
+236) [OtherTerm]  <<>                             /84/ {?}  
+237) [?]  <<>                             pop Epsilon char! 
+238) [OtherRelE]  <<>                             /82/ {Exp}  {CmpOp}  
+239) [CmpOp]  <<>                             /99/ {<}  
+240) [<]  <<>                             match!
+241) [Exp]  <ID>                             /83/ {OtherTerm}  {Term}  
+242) [Term]  <ID>                             /86/ {OtherFactor}  {Factor}  
+243) [Factor]  <ID>                             /91/ {Variable}  
+244) [Variable]  <ID>                             /92/ {VariMore}  {ID}  
+245) [ID]  <ID>                             match!
+246) [VariMore]  <DO>                             /93/ {?}  
+247) [?]  <DO>                             pop Epsilon char! 
+248) [OtherFactor]  <DO>                             /87/ {?}  
+249) [?]  <DO>                             pop Epsilon char! 
+250) [OtherTerm]  <DO>                             /84/ {?}  
+251) [?]  <DO>                             pop Epsilon char! 
+252) [DO]  <DO>                             match!
+253) [StmList]  <IF>                             /58/ {StmMore}  {Stm}  
+254) [Stm]  <IF>                             /61/ {ConditionalStm}  
+255) [ConditionalStm]  <IF>                             /70/ {FI}  {StmList}  {ELSE}  {StmList}  {THEN}  {RelExp}  {IF}  
+256) [IF]  <IF>                             match!
+257) [RelExp]  <ID>                             /81/ {OtherRelE}  {Exp}  
+258) [Exp]  <ID>                             /83/ {OtherTerm}  {Term}  
+259) [Term]  <ID>                             /86/ {OtherFactor}  {Factor}  
+260) [Factor]  <ID>                             /91/ {Variable}  
+261) [Variable]  <ID>                             /92/ {VariMore}  {ID}  
+262) [ID]  <ID>                             match!
+263) [VariMore]  <[>                             /94/ {]}  {Exp}  {[}  
+264) [[]  <[>                             match!
+265) [Exp]  <ID>                             /83/ {OtherTerm}  {Term}  
+266) [Term]  <ID>                             /86/ {OtherFactor}  {Factor}  
+267) [Factor]  <ID>                             /91/ {Variable}  
+268) [Variable]  <ID>                             /92/ {VariMore}  {ID}  
+269) [ID]  <ID>                             match!
+270) [VariMore]  <+>                             /93/ {?}  
+271) [?]  <+>                             pop Epsilon char! 
+272) [OtherFactor]  <+>                             /87/ {?}  
+273) [?]  <+>                             pop Epsilon char! 
+274) [OtherTerm]  <+>                             /85/ {Exp}  {AddOp}  
+275) [AddOp]  <+>                             /101/ {+}  
+276) [+]  <+>                             match!
+277) [Exp]  <INTC>                             /83/ {OtherTerm}  {Term}  
+278) [Term]  <INTC>                             /86/ {OtherFactor}  {Factor}  
+279) [Factor]  <INTC>                             /90/ {INTC}  
+280) [INTC]  <INTC>                             match!
+281) [OtherFactor]  <]>                             /87/ {?}  
+282) [?]  <]>                             pop Epsilon char! 
+283) [OtherTerm]  <]>                             /84/ {?}  
+284) [?]  <]>                             pop Epsilon char! 
+285) []]  <]>                             match!
+286) [OtherFactor]  <<>                             /87/ {?}  
+287) [?]  <<>                             pop Epsilon char! 
+288) [OtherTerm]  <<>                             /84/ {?}  
+289) [?]  <<>                             pop Epsilon char! 
+290) [OtherRelE]  <<>                             /82/ {Exp}  {CmpOp}  
+291) [CmpOp]  <<>                             /99/ {<}  
+292) [<]  <<>                             match!
+293) [Exp]  <ID>                             /83/ {OtherTerm}  {Term}  
+294) [Term]  <ID>                             /86/ {OtherFactor}  {Factor}  
+295) [Factor]  <ID>                             /91/ {Variable}  
+296) [Variable]  <ID>                             /92/ {VariMore}  {ID}  
+297) [ID]  <ID>                             match!
+298) [VariMore]  <[>                             /94/ {]}  {Exp}  {[}  
+299) [[]  <[>                             match!
+300) [Exp]  <ID>                             /83/ {OtherTerm}  {Term}  
+301) [Term]  <ID>                             /86/ {OtherFactor}  {Factor}  
+302) [Factor]  <ID>                             /91/ {Variable}  
+303) [Variable]  <ID>                             /92/ {VariMore}  {ID}  
+304) [ID]  <ID>                             match!
+305) [VariMore]  <]>                             /93/ {?}  
+306) [?]  <]>                             pop Epsilon char! 
+307) [OtherFactor]  <]>                             /87/ {?}  
+308) [?]  <]>                             pop Epsilon char! 
+309) [OtherTerm]  <]>                             /84/ {?}  
+310) [?]  <]>                             pop Epsilon char! 
+311) []]  <]>                             match!
+312) [OtherFactor]  <THEN>                             /87/ {?}  
+313) [?]  <THEN>                             pop Epsilon char! 
+314) [OtherTerm]  <THEN>                             /84/ {?}  
+315) [?]  <THEN>                             pop Epsilon char! 
+316) [THEN]  <THEN>                             match!
+317) [StmList]  <ID>                             /58/ {StmMore}  {Stm}  
+318) [Stm]  <ID>                             /66/ {AssCall}  {ID}  
+319) [ID]  <ID>                             match!
+320) [AssCall]  <:=>                             /67/ {AssignmentRest}  
+321) [AssignmentRest]  <:=>                             /69/ {Exp}  {:=}  {VariMore}  
+322) [VariMore]  <:=>                             /93/ {?}  
+323) [?]  <:=>                             pop Epsilon char! 
+324) [:=]  <:=>                             match!
+325) [Exp]  <ID>                             /83/ {OtherTerm}  {Term}  
+326) [Term]  <ID>                             /86/ {OtherFactor}  {Factor}  
+327) [Factor]  <ID>                             /91/ {Variable}  
+328) [Variable]  <ID>                             /92/ {VariMore}  {ID}  
+329) [ID]  <ID>                             match!
+330) [VariMore]  <[>                             /94/ {]}  {Exp}  {[}  
+331) [[]  <[>                             match!
+332) [Exp]  <ID>                             /83/ {OtherTerm}  {Term}  
+333) [Term]  <ID>                             /86/ {OtherFactor}  {Factor}  
+334) [Factor]  <ID>                             /91/ {Variable}  
+335) [Variable]  <ID>                             /92/ {VariMore}  {ID}  
+336) [ID]  <ID>                             match!
+337) [VariMore]  <]>                             /93/ {?}  
+338) [?]  <]>                             pop Epsilon char! 
+339) [OtherFactor]  <]>                             /87/ {?}  
+340) [?]  <]>                             pop Epsilon char! 
+341) [OtherTerm]  <]>                             /84/ {?}  
+342) [?]  <]>                             pop Epsilon char! 
+343) []]  <]>                             match!
+344) [OtherFactor]  <;>                             /87/ {?}  
+345) [?]  <;>                             pop Epsilon char! 
+346) [OtherTerm]  <;>                             /84/ {?}  
+347) [?]  <;>                             pop Epsilon char! 
+348) [StmMore]  <;>                             /60/ {StmList}  {;}  
+349) [;]  <;>                             match!
+350) [StmList]  <ID>                             /58/ {StmMore}  {Stm}  
+351) [Stm]  <ID>                             /66/ {AssCall}  {ID}  
+352) [ID]  <ID>                             match!
+353) [AssCall]  <[>                             /67/ {AssignmentRest}  
+354) [AssignmentRest]  <[>                             /69/ {Exp}  {:=}  {VariMore}  
+355) [VariMore]  <[>                             /94/ {]}  {Exp}  {[}  
+356) [[]  <[>                             match!
+357) [Exp]  <ID>                             /83/ {OtherTerm}  {Term}  
+358) [Term]  <ID>                             /86/ {OtherFactor}  {Factor}  
+359) [Factor]  <ID>                             /91/ {Variable}  
+360) [Variable]  <ID>                             /92/ {VariMore}  {ID}  
+361) [ID]  <ID>                             match!
+362) [VariMore]  <]>                             /93/ {?}  
+363) [?]  <]>                             pop Epsilon char! 
+364) [OtherFactor]  <]>                             /87/ {?}  
+365) [?]  <]>                             pop Epsilon char! 
+366) [OtherTerm]  <]>                             /84/ {?}  
+367) [?]  <]>                             pop Epsilon char! 
+368) []]  <]>                             match!
+369) [:=]  <:=>                             match!
+370) [Exp]  <ID>                             /83/ {OtherTerm}  {Term}  
+371) [Term]  <ID>                             /86/ {OtherFactor}  {Factor}  
+372) [Factor]  <ID>                             /91/ {Variable}  
+373) [Variable]  <ID>                             /92/ {VariMore}  {ID}  
+374) [ID]  <ID>                             match!
+375) [VariMore]  <[>                             /94/ {]}  {Exp}  {[}  
+376) [[]  <[>                             match!
+377) [Exp]  <ID>                             /83/ {OtherTerm}  {Term}  
+378) [Term]  <ID>                             /86/ {OtherFactor}  {Factor}  
+379) [Factor]  <ID>                             /91/ {Variable}  
+380) [Variable]  <ID>                             /92/ {VariMore}  {ID}  
+381) [ID]  <ID>                             match!
+382) [VariMore]  <+>                             /93/ {?}  
+383) [?]  <+>                             pop Epsilon char! 
+384) [OtherFactor]  <+>                             /87/ {?}  
+385) [?]  <+>                             pop Epsilon char! 
+386) [OtherTerm]  <+>                             /85/ {Exp}  {AddOp}  
+387) [AddOp]  <+>                             /101/ {+}  
+388) [+]  <+>                             match!
+389) [Exp]  <INTC>                             /83/ {OtherTerm}  {Term}  
+390) [Term]  <INTC>                             /86/ {OtherFactor}  {Factor}  
+391) [Factor]  <INTC>                             /90/ {INTC}  
+392) [INTC]  <INTC>                             match!
+393) [OtherFactor]  <]>                             /87/ {?}  
+394) [?]  <]>                             pop Epsilon char! 
+395) [OtherTerm]  <]>                             /84/ {?}  
+396) [?]  <]>                             pop Epsilon char! 
+397) []]  <]>                             match!
+398) [OtherFactor]  <;>                             /87/ {?}  
+399) [?]  <;>                             pop Epsilon char! 
+400) [OtherTerm]  <;>                             /84/ {?}  
+401) [?]  <;>                             pop Epsilon char! 
+402) [StmMore]  <;>                             /60/ {StmList}  {;}  
+403) [;]  <;>                             match!
+404) [StmList]  <ID>                             /58/ {StmMore}  {Stm}  
+405) [Stm]  <ID>                             /66/ {AssCall}  {ID}  
+406) [ID]  <ID>                             match!
+407) [AssCall]  <[>                             /67/ {AssignmentRest}  
+408) [AssignmentRest]  <[>                             /69/ {Exp}  {:=}  {VariMore}  
+409) [VariMore]  <[>                             /94/ {]}  {Exp}  {[}  
+410) [[]  <[>                             match!
+411) [Exp]  <ID>                             /83/ {OtherTerm}  {Term}  
+412) [Term]  <ID>                             /86/ {OtherFactor}  {Factor}  
+413) [Factor]  <ID>                             /91/ {Variable}  
+414) [Variable]  <ID>                             /92/ {VariMore}  {ID}  
+415) [ID]  <ID>                             match!
+416) [VariMore]  <+>                             /93/ {?}  
+417) [?]  <+>                             pop Epsilon char! 
+418) [OtherFactor]  <+>                             /87/ {?}  
+419) [?]  <+>                             pop Epsilon char! 
+420) [OtherTerm]  <+>                             /85/ {Exp}  {AddOp}  
+421) [AddOp]  <+>                             /101/ {+}  
+422) [+]  <+>                             match!
+423) [Exp]  <INTC>                             /83/ {OtherTerm}  {Term}  
+424) [Term]  <INTC>                             /86/ {OtherFactor}  {Factor}  
+425) [Factor]  <INTC>                             /90/ {INTC}  
+426) [INTC]  <INTC>                             match!
+427) [OtherFactor]  <]>                             /87/ {?}  
+428) [?]  <]>                             pop Epsilon char! 
+429) [OtherTerm]  <]>                             /84/ {?}  
+430) [?]  <]>                             pop Epsilon char! 
+431) []]  <]>                             match!
+432) [:=]  <:=>                             match!
+433) [Exp]  <ID>                             /83/ {OtherTerm}  {Term}  
+434) [Term]  <ID>                             /86/ {OtherFactor}  {Factor}  
+435) [Factor]  <ID>                             /91/ {Variable}  
+436) [Variable]  <ID>                             /92/ {VariMore}  {ID}  
+437) [ID]  <ID>                             match!
+438) [VariMore]  <ELSE>                             /93/ {?}  
+439) [?]  <ELSE>                             pop Epsilon char! 
+440) [OtherFactor]  <ELSE>                             /87/ {?}  
+441) [?]  <ELSE>                             pop Epsilon char! 
+442) [OtherTerm]  <ELSE>                             /84/ {?}  
+443) [?]  <ELSE>                             pop Epsilon char! 
+444) [StmMore]  <ELSE>                             /59/ {?}  
+445) [?]  <ELSE>                             pop Epsilon char! 
+446) [ELSE]  <ELSE>                             match!
+447) [StmList]  <ID>                             /58/ {StmMore}  {Stm}  
+448) [Stm]  <ID>                             /66/ {AssCall}  {ID}  
+449) [ID]  <ID>                             match!
+450) [AssCall]  <:=>                             /67/ {AssignmentRest}  
+451) [AssignmentRest]  <:=>                             /69/ {Exp}  {:=}  {VariMore}  
+452) [VariMore]  <:=>                             /93/ {?}  
+453) [?]  <:=>                             pop Epsilon char! 
+454) [:=]  <:=>                             match!
+455) [Exp]  <INTC>                             /83/ {OtherTerm}  {Term}  
+456) [Term]  <INTC>                             /86/ {OtherFactor}  {Factor}  
+457) [Factor]  <INTC>                             /90/ {INTC}  
+458) [INTC]  <INTC>                             match!
+459) [OtherFactor]  <FI>                             /87/ {?}  
+460) [?]  <FI>                             pop Epsilon char! 
+461) [OtherTerm]  <FI>                             /84/ {?}  
+462) [?]  <FI>                             pop Epsilon char! 
+463) [StmMore]  <FI>                             /59/ {?}  
+464) [?]  <FI>                             pop Epsilon char! 
+465) [FI]  <FI>                             match!
+466) [StmMore]  <;>                             /60/ {StmList}  {;}  
+467) [;]  <;>                             match!
+468) [StmList]  <ID>                             /58/ {StmMore}  {Stm}  
+469) [Stm]  <ID>                             /66/ {AssCall}  {ID}  
+470) [ID]  <ID>                             match!
+471) [AssCall]  <:=>                             /67/ {AssignmentRest}  
+472) [AssignmentRest]  <:=>                             /69/ {Exp}  {:=}  {VariMore}  
+473) [VariMore]  <:=>                             /93/ {?}  
+474) [?]  <:=>                             pop Epsilon char! 
+475) [:=]  <:=>                             match!
+476) [Exp]  <ID>                             /83/ {OtherTerm}  {Term}  
+477) [Term]  <ID>                             /86/ {OtherFactor}  {Factor}  
+478) [Factor]  <ID>                             /91/ {Variable}  
+479) [Variable]  <ID>                             /92/ {VariMore}  {ID}  
+480) [ID]  <ID>                             match!
+481) [VariMore]  <+>                             /93/ {?}  
+482) [?]  <+>                             pop Epsilon char! 
+483) [OtherFactor]  <+>                             /87/ {?}  
+484) [?]  <+>                             pop Epsilon char! 
+485) [OtherTerm]  <+>                             /85/ {Exp}  {AddOp}  
+486) [AddOp]  <+>                             /101/ {+}  
+487) [+]  <+>                             match!
+488) [Exp]  <INTC>                             /83/ {OtherTerm}  {Term}  
+489) [Term]  <INTC>                             /86/ {OtherFactor}  {Factor}  
+490) [Factor]  <INTC>                             /90/ {INTC}  
+491) [INTC]  <INTC>                             match!
+492) [OtherFactor]  <ENDWH>                             /87/ {?}  
+493) [?]  <ENDWH>                             pop Epsilon char! 
+494) [OtherTerm]  <ENDWH>                             /84/ {?}  
+495) [?]  <ENDWH>                             pop Epsilon char! 
+496) [StmMore]  <ENDWH>                             /59/ {?}  
+497) [?]  <ENDWH>                             pop Epsilon char! 
+498) [ENDWH]  <ENDWH>                             match!
+499) [StmMore]  <;>                             /60/ {StmList}  {;}  
+500) [;]  <;>                             match!
+501) [StmList]  <ID>                             /58/ {StmMore}  {Stm}  
+502) [Stm]  <ID>                             /66/ {AssCall}  {ID}  
+503) [ID]  <ID>                             match!
+504) [AssCall]  <:=>                             /67/ {AssignmentRest}  
+505) [AssignmentRest]  <:=>                             /69/ {Exp}  {:=}  {VariMore}  
+506) [VariMore]  <:=>                             /93/ {?}  
+507) [?]  <:=>                             pop Epsilon char! 
+508) [:=]  <:=>                             match!
+509) [Exp]  <ID>                             /83/ {OtherTerm}  {Term}  
+510) [Term]  <ID>                             /86/ {OtherFactor}  {Factor}  
+511) [Factor]  <ID>                             /91/ {Variable}  
+512) [Variable]  <ID>                             /92/ {VariMore}  {ID}  
+513) [ID]  <ID>                             match!
+514) [VariMore]  <+>                             /93/ {?}  
+515) [?]  <+>                             pop Epsilon char! 
+516) [OtherFactor]  <+>                             /87/ {?}  
+517) [?]  <+>                             pop Epsilon char! 
+518) [OtherTerm]  <+>                             /85/ {Exp}  {AddOp}  
+519) [AddOp]  <+>                             /101/ {+}  
+520) [+]  <+>                             match!
+521) [Exp]  <INTC>                             /83/ {OtherTerm}  {Term}  
+522) [Term]  <INTC>                             /86/ {OtherFactor}  {Factor}  
+523) [Factor]  <INTC>                             /90/ {INTC}  
+524) [INTC]  <INTC>                             match!
+525) [OtherFactor]  <ENDWH>                             /87/ {?}  
+526) [?]  <ENDWH>                             pop Epsilon char! 
+527) [OtherTerm]  <ENDWH>                             /84/ {?}  
+528) [?]  <ENDWH>                             pop Epsilon char! 
+529) [StmMore]  <ENDWH>                             /59/ {?}  
+530) [?]  <ENDWH>                             pop Epsilon char! 
+531) [ENDWH]  <ENDWH>                             match!
+532) [StmMore]  <END>                             /59/ {?}  
+533) [?]  <END>                             pop Epsilon char! 
+534) [END]  <END>                             match!
+535) [ProcDec]  <BEGIN>                             /39/ {?}  
+536) [?]  <BEGIN>                             pop Epsilon char! 
+537) [ProgramBody]  <BEGIN>                             /57/ {END}  {StmList}  {BEGIN}  
+538) [BEGIN]  <BEGIN>                             match!
+539) [StmList]  <READ>                             /58/ {StmMore}  {Stm}  
+540) [Stm]  <READ>                             /63/ {InputStm}  
+541) [InputStm]  <READ>                             /72/ {)}  {Invar}  {(}  {READ}  
+542) [READ]  <READ>                             match!
+543) [(]  <(>                             match!
+544) [Invar]  <ID>                             /73/ {ID}  
+545) [ID]  <ID>                             match!
+546) [)]  <)>                             match!
+547) [StmMore]  <;>                             /60/ {StmList}  {;}  
+548) [;]  <;>                             match!
+549) [StmList]  <ID>                             /58/ {StmMore}  {Stm}  
+550) [Stm]  <ID>                             /66/ {AssCall}  {ID}  
+551) [ID]  <ID>                             match!
+552) [AssCall]  <:=>                             /67/ {AssignmentRest}  
+553) [AssignmentRest]  <:=>                             /69/ {Exp}  {:=}  {VariMore}  
+554) [VariMore]  <:=>                             /93/ {?}  
+555) [?]  <:=>                             pop Epsilon char! 
+556) [:=]  <:=>                             match!
+557) [Exp]  <INTC>                             /83/ {OtherTerm}  {Term}  
+558) [Term]  <INTC>                             /86/ {OtherFactor}  {Factor}  
+559) [Factor]  <INTC>                             /90/ {INTC}  
+560) [INTC]  <INTC>                             match!
+561) [OtherFactor]  <;>                             /87/ {?}  
+562) [?]  <;>                             pop Epsilon char! 
+563) [OtherTerm]  <;>                             /84/ {?}  
+564) [?]  <;>                             pop Epsilon char! 
+565) [StmMore]  <;>                             /60/ {StmList}  {;}  
+566) [;]  <;>                             match!
+567) [StmList]  <WHILE>                             /58/ {StmMore}  {Stm}  
+568) [Stm]  <WHILE>                             /62/ {LoopStm}  
+569) [LoopStm]  <WHILE>                             /71/ {ENDWH}  {StmList}  {DO}  {RelExp}  {WHILE}  
+570) [WHILE]  <WHILE>                             match!
+571) [RelExp]  <ID>                             /81/ {OtherRelE}  {Exp}  
+572) [Exp]  <ID>                             /83/ {OtherTerm}  {Term}  
+573) [Term]  <ID>                             /86/ {OtherFactor}  {Factor}  
+574) [Factor]  <ID>                             /91/ {Variable}  
+575) [Variable]  <ID>                             /92/ {VariMore}  {ID}  
+576) [ID]  <ID>                             match!
+577) [VariMore]  <<>                             /93/ {?}  
+578) [?]  <<>                             pop Epsilon char! 
+579) [OtherFactor]  <<>                             /87/ {?}  
+580) [?]  <<>                             pop Epsilon char! 
+581) [OtherTerm]  <<>                             /84/ {?}  
+582) [?]  <<>                             pop Epsilon char! 
+583) [OtherRelE]  <<>                             /82/ {Exp}  {CmpOp}  
+584) [CmpOp]  <<>                             /99/ {<}  
+585) [<]  <<>                             match!
+586) [Exp]  <(>                             /83/ {OtherTerm}  {Term}  
+587) [Term]  <(>                             /86/ {OtherFactor}  {Factor}  
+588) [Factor]  <(>                             /89/ {)}  {Exp}  {(}  
+589) [(]  <(>                             match!
+590) [Exp]  <ID>                             /83/ {OtherTerm}  {Term}  
+591) [Term]  <ID>                             /86/ {OtherFactor}  {Factor}  
+592) [Factor]  <ID>                             /91/ {Variable}  
+593) [Variable]  <ID>                             /92/ {VariMore}  {ID}  
+594) [ID]  <ID>                             match!
+595) [VariMore]  <+>                             /93/ {?}  
+596) [?]  <+>                             pop Epsilon char! 
+597) [OtherFactor]  <+>                             /87/ {?}  
+598) [?]  <+>                             pop Epsilon char! 
+599) [OtherTerm]  <+>                             /85/ {Exp}  {AddOp}  
+600) [AddOp]  <+>                             /101/ {+}  
+601) [+]  <+>                             match!
+602) [Exp]  <INTC>                             /83/ {OtherTerm}  {Term}  
+603) [Term]  <INTC>                             /86/ {OtherFactor}  {Factor}  
+604) [Factor]  <INTC>                             /90/ {INTC}  
+605) [INTC]  <INTC>                             match!
+606) [OtherFactor]  <)>                             /87/ {?}  
+607) [?]  <)>                             pop Epsilon char! 
+608) [OtherTerm]  <)>                             /84/ {?}  
+609) [?]  <)>                             pop Epsilon char! 
+610) [)]  <)>                             match!
+611) [OtherFactor]  <DO>                             /87/ {?}  
+612) [?]  <DO>                             pop Epsilon char! 
+613) [OtherTerm]  <DO>                             /84/ {?}  
+614) [?]  <DO>                             pop Epsilon char! 
+615) [DO]  <DO>                             match!
+616) [StmList]  <READ>                             /58/ {StmMore}  {Stm}  
+617) [Stm]  <READ>                             /63/ {InputStm}  
+618) [InputStm]  <READ>                             /72/ {)}  {Invar}  {(}  {READ}  
+619) [READ]  <READ>                             match!
+620) [(]  <(>                             match!
+621) [Invar]  <ID>                             /73/ {ID}  
+622) [ID]  <ID>                             match!
+623) [)]  <)>                             match!
+624) [StmMore]  <;>                             /60/ {StmList}  {;}  
+625) [;]  <;>                             match!
+626) [StmList]  <ID>                             /58/ {StmMore}  {Stm}  
+627) [Stm]  <ID>                             /66/ {AssCall}  {ID}  
+628) [ID]  <ID>                             match!
+629) [AssCall]  <[>                             /67/ {AssignmentRest}  
+630) [AssignmentRest]  <[>                             /69/ {Exp}  {:=}  {VariMore}  
+631) [VariMore]  <[>                             /94/ {]}  {Exp}  {[}  
+632) [[]  <[>                             match!
+633) [Exp]  <ID>                             /83/ {OtherTerm}  {Term}  
+634) [Term]  <ID>                             /86/ {OtherFactor}  {Factor}  
+635) [Factor]  <ID>                             /91/ {Variable}  
+636) [Variable]  <ID>                             /92/ {VariMore}  {ID}  
+637) [ID]  <ID>                             match!
+638) [VariMore]  <]>                             /93/ {?}  
+639) [?]  <]>                             pop Epsilon char! 
+640) [OtherFactor]  <]>                             /87/ {?}  
+641) [?]  <]>                             pop Epsilon char! 
+642) [OtherTerm]  <]>                             /84/ {?}  
+643) [?]  <]>                             pop Epsilon char! 
+644) []]  <]>                             match!
+645) [:=]  <:=>                             match!
+646) [Exp]  <ID>                             /83/ {OtherTerm}  {Term}  
+647) [Term]  <ID>                             /86/ {OtherFactor}  {Factor}  
+648) [Factor]  <ID>                             /91/ {Variable}  
+649) [Variable]  <ID>                             /92/ {VariMore}  {ID}  
+650) [ID]  <ID>                             match!
+651) [VariMore]  <;>                             /93/ {?}  
+652) [?]  <;>                             pop Epsilon char! 
+653) [OtherFactor]  <;>                             /87/ {?}  
+654) [?]  <;>                             pop Epsilon char! 
+655) [OtherTerm]  <;>                             /84/ {?}  
+656) [?]  <;>                             pop Epsilon char! 
+657) [StmMore]  <;>                             /60/ {StmList}  {;}  
+658) [;]  <;>                             match!
+659) [StmList]  <ID>                             /58/ {StmMore}  {Stm}  
+660) [Stm]  <ID>                             /66/ {AssCall}  {ID}  
+661) [ID]  <ID>                             match!
+662) [AssCall]  <:=>                             /67/ {AssignmentRest}  
+663) [AssignmentRest]  <:=>                             /69/ {Exp}  {:=}  {VariMore}  
+664) [VariMore]  <:=>                             /93/ {?}  
+665) [?]  <:=>                             pop Epsilon char! 
+666) [:=]  <:=>                             match!
+667) [Exp]  <ID>                             /83/ {OtherTerm}  {Term}  
+668) [Term]  <ID>                             /86/ {OtherFactor}  {Factor}  
+669) [Factor]  <ID>                             /91/ {Variable}  
+670) [Variable]  <ID>                             /92/ {VariMore}  {ID}  
+671) [ID]  <ID>                             match!
+672) [VariMore]  <+>                             /93/ {?}  
+673) [?]  <+>                             pop Epsilon char! 
+674) [OtherFactor]  <+>                             /87/ {?}  
+675) [?]  <+>                             pop Epsilon char! 
+676) [OtherTerm]  <+>                             /85/ {Exp}  {AddOp}  
+677) [AddOp]  <+>                             /101/ {+}  
+678) [+]  <+>                             match!
+679) [Exp]  <INTC>                             /83/ {OtherTerm}  {Term}  
+680) [Term]  <INTC>                             /86/ {OtherFactor}  {Factor}  
+681) [Factor]  <INTC>                             /90/ {INTC}  
+682) [INTC]  <INTC>                             match!
+683) [OtherFactor]  <*>                             /88/ {Term}  {MultOp}  
+684) [MultOp]  <*>                             /103/ {*}  
+685) [*]  <*>                             match!
+686) [Term]  <INTC>                             /86/ {OtherFactor}  {Factor}  
+687) [Factor]  <INTC>                             /90/ {INTC}  
+688) [INTC]  <INTC>                             match!
+689) [OtherFactor]  <ENDWH>                             /87/ {?}  
+690) [?]  <ENDWH>                             pop Epsilon char! 
+691) [OtherTerm]  <ENDWH>                             /84/ {?}  
+692) [?]  <ENDWH>                             pop Epsilon char! 
+693) [StmMore]  <ENDWH>                             /59/ {?}  
+694) [?]  <ENDWH>                             pop Epsilon char! 
+695) [ENDWH]  <ENDWH>                             match!
+696) [StmMore]  <;>                             /60/ {StmList}  {;}  
+697) [;]  <;>                             match!
+698) [StmList]  <ID>                             /58/ {StmMore}  {Stm}  
+699) [Stm]  <ID>                             /66/ {AssCall}  {ID}  
+700) [ID]  <ID>                             match!
+701) [AssCall]  <(>                             /68/ {CallStmRest}  
+702) [CallStmRest]  <(>                             /76/ {)}  {ActParamList}  {(}  
+703) [(]  <(>                             match!
+704) [ActParamList]  <ID>                             /78/ {ActParamMore}  {Exp}  
+705) [Exp]  <ID>                             /83/ {OtherTerm}  {Term}  
+706) [Term]  <ID>                             /86/ {OtherFactor}  {Factor}  
+707) [Factor]  <ID>                             /91/ {Variable}  
+708) [Variable]  <ID>                             /92/ {VariMore}  {ID}  
+709) [ID]  <ID>                             match!
+710) [VariMore]  <)>                             /93/ {?}  
+711) [?]  <)>                             pop Epsilon char! 
+712) [OtherFactor]  <)>                             /87/ {?}  
+713) [?]  <)>                             pop Epsilon char! 
+714) [OtherTerm]  <)>                             /84/ {?}  
+715) [?]  <)>                             pop Epsilon char! 
+716) [ActParamMore]  <)>                             /79/ {?}  
+717) [?]  <)>                             pop Epsilon char! 
+718) [)]  <)>                             match!
+719) [StmMore]  <;>                             /60/ {StmList}  {;}  
+720) [;]  <;>                             match!
+721) [StmList]  <ID>                             /58/ {StmMore}  {Stm}  
+722) [Stm]  <ID>                             /66/ {AssCall}  {ID}  
+723) [ID]  <ID>                             match!
+724) [AssCall]  <:=>                             /67/ {AssignmentRest}  
+725) [AssignmentRest]  <:=>                             /69/ {Exp}  {:=}  {VariMore}  
+726) [VariMore]  <:=>                             /93/ {?}  
+727) [?]  <:=>                             pop Epsilon char! 
+728) [:=]  <:=>                             match!
+729) [Exp]  <INTC>                             /83/ {OtherTerm}  {Term}  
+730) [Term]  <INTC>                             /86/ {OtherFactor}  {Factor}  
+731) [Factor]  <INTC>                             /90/ {INTC}  
+732) [INTC]  <INTC>                             match!
+733) [OtherFactor]  <;>                             /87/ {?}  
+734) [?]  <;>                             pop Epsilon char! 
+735) [OtherTerm]  <;>                             /84/ {?}  
+736) [?]  <;>                             pop Epsilon char! 
+737) [StmMore]  <;>                             /60/ {StmList}  {;}  
+738) [;]  <;>                             match!
+739) [StmList]  <WHILE>                             /58/ {StmMore}  {Stm}  
+740) [Stm]  <WHILE>                             /62/ {LoopStm}  
+741) [LoopStm]  <WHILE>                             /71/ {ENDWH}  {StmList}  {DO}  {RelExp}  {WHILE}  
+742) [WHILE]  <WHILE>                             match!
+743) [RelExp]  <ID>                             /81/ {OtherRelE}  {Exp}  
+744) [Exp]  <ID>                             /83/ {OtherTerm}  {Term}  
+745) [Term]  <ID>                             /86/ {OtherFactor}  {Factor}  
+746) [Factor]  <ID>                             /91/ {Variable}  
+747) [Variable]  <ID>                             /92/ {VariMore}  {ID}  
+748) [ID]  <ID>                             match!
+749) [VariMore]  <<>                             /93/ {?}  
+750) [?]  <<>                             pop Epsilon char! 
+751) [OtherFactor]  <<>                             /87/ {?}  
+752) [?]  <<>                             pop Epsilon char! 
+753) [OtherTerm]  <<>                             /84/ {?}  
+754) [?]  <<>                             pop Epsilon char! 
+755) [OtherRelE]  <<>                             /82/ {Exp}  {CmpOp}  
+756) [CmpOp]  <<>                             /99/ {<}  
+757) [<]  <<>                             match!
+758) [Exp]  <(>                             /83/ {OtherTerm}  {Term}  
+759) [Term]  <(>                             /86/ {OtherFactor}  {Factor}  
+760) [Factor]  <(>                             /89/ {)}  {Exp}  {(}  
+761) [(]  <(>                             match!
+762) [Exp]  <ID>                             /83/ {OtherTerm}  {Term}  
+763) [Term]  <ID>                             /86/ {OtherFactor}  {Factor}  
+764) [Factor]  <ID>                             /91/ {Variable}  
+765) [Variable]  <ID>                             /92/ {VariMore}  {ID}  
+766) [ID]  <ID>                             match!
+767) [VariMore]  <+>                             /93/ {?}  
+768) [?]  <+>                             pop Epsilon char! 
+769) [OtherFactor]  <+>                             /87/ {?}  
+770) [?]  <+>                             pop Epsilon char! 
+771) [OtherTerm]  <+>                             /85/ {Exp}  {AddOp}  
+772) [AddOp]  <+>                             /101/ {+}  
+773) [+]  <+>                             match!
+774) [Exp]  <INTC>                             /83/ {OtherTerm}  {Term}  
+775) [Term]  <INTC>                             /86/ {OtherFactor}  {Factor}  
+776) [Factor]  <INTC>                             /90/ {INTC}  
+777) [INTC]  <INTC>                             match!
+778) [OtherFactor]  <)>                             /87/ {?}  
+779) [?]  <)>                             pop Epsilon char! 
+780) [OtherTerm]  <)>                             /84/ {?}  
+781) [?]  <)>                             pop Epsilon char! 
+782) [)]  <)>                             match!
+783) [OtherFactor]  <DO>                             /87/ {?}  
+784) [?]  <DO>                             pop Epsilon char! 
+785) [OtherTerm]  <DO>                             /84/ {?}  
+786) [?]  <DO>                             pop Epsilon char! 
+787) [DO]  <DO>                             match!
+788) [StmList]  <WRITE>                             /58/ {StmMore}  {Stm}  
+789) [Stm]  <WRITE>                             /64/ {OutputStm}  
+790) [OutputStm]  <WRITE>                             /74/ {)}  {Exp}  {(}  {WRITE}  
+791) [WRITE]  <WRITE>                             match!
+792) [(]  <(>                             match!
+793) [Exp]  <ID>                             /83/ {OtherTerm}  {Term}  
+794) [Term]  <ID>                             /86/ {OtherFactor}  {Factor}  
+795) [Factor]  <ID>                             /91/ {Variable}  
+796) [Variable]  <ID>                             /92/ {VariMore}  {ID}  
+797) [ID]  <ID>                             match!
+798) [VariMore]  <[>                             /94/ {]}  {Exp}  {[}  
+799) [[]  <[>                             match!
+800) [Exp]  <ID>                             /83/ {OtherTerm}  {Term}  
+801) [Term]  <ID>                             /86/ {OtherFactor}  {Factor}  
+802) [Factor]  <ID>                             /91/ {Variable}  
+803) [Variable]  <ID>                             /92/ {VariMore}  {ID}  
+804) [ID]  <ID>                             match!
+805) [VariMore]  <]>                             /93/ {?}  
+806) [?]  <]>                             pop Epsilon char! 
+807) [OtherFactor]  <]>                             /87/ {?}  
+808) [?]  <]>                             pop Epsilon char! 
+809) [OtherTerm]  <]>                             /84/ {?}  
+810) [?]  <]>                             pop Epsilon char! 
+811) []]  <]>                             match!
+812) [OtherFactor]  <)>                             /87/ {?}  
+813) [?]  <)>                             pop Epsilon char! 
+814) [OtherTerm]  <)>                             /84/ {?}  
+815) [?]  <)>                             pop Epsilon char! 
+816) [)]  <)>                             match!
+817) [StmMore]  <;>                             /60/ {StmList}  {;}  
+818) [;]  <;>                             match!
+819) [StmList]  <ID>                             /58/ {StmMore}  {Stm}  
+820) [Stm]  <ID>                             /66/ {AssCall}  {ID}  
+821) [ID]  <ID>                             match!
+822) [AssCall]  <:=>                             /67/ {AssignmentRest}  
+823) [AssignmentRest]  <:=>                             /69/ {Exp}  {:=}  {VariMore}  
+824) [VariMore]  <:=>                             /93/ {?}  
+825) [?]  <:=>                             pop Epsilon char! 
+826) [:=]  <:=>                             match!
+827) [Exp]  <ID>                             /83/ {OtherTerm}  {Term}  
+828) [Term]  <ID>                             /86/ {OtherFactor}  {Factor}  
+829) [Factor]  <ID>                             /91/ {Variable}  
+830) [Variable]  <ID>                             /92/ {VariMore}  {ID}  
+831) [ID]  <ID>                             match!
+832) [VariMore]  <+>                             /93/ {?}  
+833) [?]  <+>                             pop Epsilon char! 
+834) [OtherFactor]  <+>                             /87/ {?}  
+835) [?]  <+>                             pop Epsilon char! 
+836) [OtherTerm]  <+>                             /85/ {Exp}  {AddOp}  
+837) [AddOp]  <+>                             /101/ {+}  
+838) [+]  <+>                             match!
+839) [Exp]  <INTC>                             /83/ {OtherTerm}  {Term}  
+840) [Term]  <INTC>                             /86/ {OtherFactor}  {Factor}  
+841) [Factor]  <INTC>                             /90/ {INTC}  
+842) [INTC]  <INTC>                             match!
+843) [OtherFactor]  <ENDWH>                             /87/ {?}  
+844) [?]  <ENDWH>                             pop Epsilon char! 
+845) [OtherTerm]  <ENDWH>                             /84/ {?}  
+846) [?]  <ENDWH>                             pop Epsilon char! 
+847) [StmMore]  <ENDWH>                             /59/ {?}  
+848) [?]  <ENDWH>                             pop Epsilon char! 
+849) [ENDWH]  <ENDWH>                             match!
+850) [StmMore]  <END>                             /59/ {?}  
+851) [?]  <END>                             pop Epsilon char! 
+852) [END]  <END>                             match!
+853) [.]  <.>                             match!
+854) [#]  <#>                             Success! Match!

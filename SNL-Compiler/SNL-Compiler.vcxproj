@@ -115,6 +115,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="globals.h" />
+    <ClInclude Include="Parse.h" />
+    <ClInclude Include="PredictSet.h" />
+    <ClInclude Include="Scanner.h" />
+    <ClInclude Include="SyntaxTree.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="globals.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Parse.cpp" />
+    <ClCompile Include="PredictSet.cpp" />
+    <ClCompile Include="Scanner.cpp" />
+    <ClCompile Include="SyntaxTree.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

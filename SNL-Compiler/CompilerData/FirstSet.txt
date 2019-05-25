@@ -1,0 +1,71 @@
+First Map: 
+
+ActParamList: { ( ? ID INTC  }
+ActParamMore: { , ?  }
+AddOp: { + -  }
+ArrayType: { ARRAY  }
+AssCall: { ( . := [  }
+AssignmentRest: { . := [  }
+BaseType: { CHAR INTEGER  }
+CallStmRest: { (  }
+CmpOp: { < =  }
+ConditionalStm: { IF  }
+DeclarePart: { ? PROCEDURE TYPE VAR  }
+Exp: { ( ID INTC  }
+Factor: { ( ID INTC  }
+FidMore: { , ?  }
+FieldDecList: { ARRAY CHAR INTEGER  }
+FieldDecMore: { ? ARRAY CHAR INTEGER  }
+FieldVar: { ID  }
+FieldVarMore: { ? [  }
+FormList: { ID  }
+IdList: { ID  }
+IdMore: { , ?  }
+InputStm: { READ  }
+Invar: { ID  }
+LoopStm: { WHILE  }
+Low: { INTC  }
+MultOp: { * /  }
+OtherFactor: { * / ?  }
+OtherRelE: { < =  }
+OtherTerm: { + - ?  }
+OutputStm: { WRITE  }
+Param: { ARRAY CHAR ID INTEGER RECORD VAR  }
+ParamDecList: { ARRAY CHAR ID INTEGER RECORD VAR  }
+ParamList: { ? ARRAY CHAR ID INTEGER RECORD VAR  }
+ParamMore: { ; ?  }
+ProcBody: { BEGIN  }
+ProcDec: { ? PROCEDURE  }
+ProcDecMore: { ? PROCEDURE  }
+ProcDecPart: { ? PROCEDURE TYPE VAR  }
+ProcDeclaration: { PROCEDURE  }
+ProcName: { ID  }
+Program: { PROGRAM  }
+ProgramBody: { BEGIN  }
+ProgramHead: { PROGRAM  }
+ProgramName: { ID  }
+RecType: { RECORD  }
+RelExp: { ( ID INTC  }
+ReturnStm: { RETURN  }
+Stm: { ID IF READ RETURN WHILE WRITE  }
+StmList: { ID IF READ RETURN WHILE WRITE  }
+StmMore: { ; ?  }
+StructureType: { ARRAY RECORD  }
+Term: { ( ID INTC  }
+Top: { INTC  }
+TypeDec: { ? TYPE  }
+TypeDecList: { ID  }
+TypeDecMore: { ? ID  }
+TypeDeclaration: { TYPE  }
+TypeId: { ID  }
+TypeName: { ARRAY CHAR ID INTEGER RECORD  }
+VarDec: { ? VAR  }
+VarDecList: { ARRAY CHAR ID INTEGER RECORD  }
+VarDecMore: { ? ARRAY CHAR ID INTEGER RECORD  }
+VarDeclaration: { VAR  }
+VarIdList: { ID  }
+VarIdMore: { , ?  }
+VariMore: { . ? [  }
+Variable: { ID  }
+
+
